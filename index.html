@@ -499,7 +499,7 @@
   </div>
 
   <div class="panel tools-panel" style="padding: 8px 12px;">
-    
+    <div class="actions" style="margin-bottom:8px"><a href="coureur.html" class="btn-owaka" style="text-align:center;flex:1">📡 Mode coureur (partager)</a></div>
     <div class="actions" style="margin-top: 0;">
       <button id="btn-map-toggle">🗺️ Raster</button>
       <button id="btn-precache">📥 Carte hors ligne</button>
@@ -1952,6 +1952,119 @@ function updatePaceState({
 }
 
 
+
+/* === crew_sync.js === */
+
+// Auth-free crew position sync via Firebase Realtime Database REST API.
+
+const CREW_MARKER_COLORS = ["#60a5fa", "#a78bfa", "#fbbf24"];
+
+function slugifyRiderName(name) {
+  const s = String(name || "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return s || "rider";
+}
+
+function crewDbPath(dbUrl, roomId) {
+  const base = String(dbUrl || "").replace(/\/+$/, "");
+  const room = encodeURIComponent(String(roomId || "").trim());
+  return `${base}/rooms/${room}`;
+}
+
+function publishCrewPosition({ dbUrl, roomId, riderSlug, name, lat, lon, ts }) {
+  const slug = encodeURIComponent(String(riderSlug || "").trim());
+  if (!slug) return Promise.reject(new Error("rider slug required"));
+  const url = `${crewDbPath(dbUrl, roomId)}/${slug}.json`;
+  const body = JSON.stringify({
+    name: String(name || riderSlug),
+    lat: Number(lat),
+    lon: Number(lon),
+    ts: Math.round(Number(ts)),
+  });
+  return fetch(url, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body,
+    cache: "no-store",
+  }).then((resp) => {
+    if (!resp.ok) throw new Error(`publish failed (${resp.status})`);
+    return resp.json().catch(() => null);
+  });
+}
+
+function fetchCrewPositions({ dbUrl, roomId }) {
+  const url = `${crewDbPath(dbUrl, roomId)}.json`;
+  return fetch(url, { cache: "no-store" }).then((resp) => {
+    if (!resp.ok) throw new Error(`fetch failed (${resp.status})`);
+    return resp.json();
+  });
+}
+
+function parseCrewRiders(raw, selfSlug, nowS, staleAfterS) {
+  const riders = [];
+  if (!raw || typeof raw !== "object") return riders;
+  const self = selfSlug ? String(selfSlug).trim().toLowerCase() : "";
+  const now = Math.round(Number(nowS));
+  const staleAfter = Math.max(60, Math.round(Number(staleAfterS) || 10800));
+
+  for (const [slug, entry] of Object.entries(raw)) {
+    if (!entry || typeof entry !== "object") continue;
+    const name = String(entry.name || slug).trim();
+    const lat = Number(entry.lat);
+    const lon = Number(entry.lon);
+    const ts = Math.round(Number(entry.ts));
+    if (!Number.isFinite(lat) || !Number.isFinite(lon) || !Number.isFinite(ts)) continue;
+    const ageS = Math.max(0, now - ts);
+    if (ageS > staleAfter) continue;
+    const riderSlug = String(slug).trim().toLowerCase();
+    if (self && riderSlug === self) continue;
+    riders.push({
+      slug: riderSlug,
+      name,
+      lat,
+      lon,
+      ts,
+      ageS,
+      stale: ageS > 1800,
+    });
+  }
+
+  riders.sort((a, b) => a.name.localeCompare(b.name, "fr"));
+  return riders;
+}
+
+function crewMarkerColor(index) {
+  const i = Math.max(0, Math.floor(Number(index) || 0));
+  return CREW_MARKER_COLORS[i % CREW_MARKER_COLORS.length];
+}
+
+function formatCrewAgeS(ageS) {
+  const s = Math.max(0, Math.round(Number(ageS) || 0));
+  if (s < 60) return "à l'instant";
+  const m = Math.floor(s / 60);
+  if (m < 60) return `il y a ${m} min`;
+  const h = Math.floor(m / 60);
+  const rm = m % 60;
+  if (rm === 0) return `il y a ${h} h`;
+  return `il y a ${h} h ${rm} min`;
+}
+
+function crewInitials(name) {
+  const compact = String(name || "")
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9]/g, "");
+  if (!compact) return "?";
+  return compact.slice(0, 3).toUpperCase();
+}
+
+
   </script>
 
   <script>
@@ -2020,7 +2133,7 @@ function updatePaceState({
     const TOTAL_KM = TRACK[TRACK.length - 1].km;
     const IS_LOOP = true;
     const START_TIME = "2026-09-05T04:00:00+02:00";
-    const CREW_SYNC = {"enabled":false,"dbUrl":"","roomId":"","staleAfterS":21600};
+    const CREW_SYNC = {"enabled":true,"dbUrl":"https://brm1000-crew-default-rtdb.europe-west1.firebasedatabase.app/","roomId":"7majeurs-2026-tom","staleAfterS":21600};
     const STYLE_URL = "https://tiles.openfreemap.org/styles/liberty";
 
     function distAhead(curKm, targetKm) {
