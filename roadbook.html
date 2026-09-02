@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Roadbook — Les 7 Majeurs (Guillestre <24h)</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #131b2e;
+      --card-border: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0 0 5rem 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 15, 25, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .nav-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #1e293b;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.15s;
+    }
+    .nav-btn:hover, .nav-btn.active {
+      background: #38bdf8;
+      color: #0b0f19;
+      border-color: #38bdf8;
+    }
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem;
+    }
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
+      color: #fff;
+      background: linear-gradient(135deg, #fff 40%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.4rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-top: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      margin-bottom: 0.9rem;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+    ul {
+      margin-bottom: 1rem;
+      padding-left: 1.25rem;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+    li {
+      margin-bottom: 0.35rem;
+    }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(255, 255, 255, 0.08);
+      color: #38bdf8;
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.85em;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--card-border);
+      margin: 2rem 0;
+    }
+    .callout {
+      background: var(--accent-glow);
+      border-left: 4px solid var(--accent);
+      padding: 0.85rem 1rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.2rem 0;
+    }
+    .callout p {
+      margin-bottom: 0.3rem;
+      color: #e0f2fe;
+    }
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.2rem 0;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      background: var(--card-bg);
+      -webkit-overflow-scrolling: touch;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: left;
+      white-space: nowrap;
+    }
+    th {
+      background: #1e293b;
+      color: #f8fafc;
+      font-weight: 700;
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+    td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: #cbd5e1;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:nth-child(even) {
+      background: rgba(255,255,255,0.015);
+    }
+    strong {
+      color: #fff;
+    }
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--card-border);
+      padding: 0.65rem 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      z-index: 50;
+    }
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #38bdf8;
+      color: #0b0f19;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .action-btn-secondary {
+      background: #1e293b;
+      color: #f1f5f9;
+      border: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-title">
+      <span>🏔️</span> 7 Majeurs
+    </div>
+    <div class="nav-buttons">
+      <a href="index.html" class="nav-btn">🗺️ Carte</a>
+      <a href="roadbook.html" class="nav-btn active">📖 Roadbook</a>
+      <a href="coureur.html" class="nav-btn">🛰️ Balise</a>
+    </div>
+  </header>
+
+  <main>
+    <h1>7 Majeurs — Roadbook One-Push (Chevalier <24h)</h1>
+<p>Tentative <strong>non-stop</strong> en sens horaire, <strong>départ/arrivée Guillestre</strong>.</p>
+<div class="callout">
+<p>Source : GPX <code>Les-7-Majeurs-Officiel-Sens-horaire-Guillestre.gpx</code> (trace officielle).</p>
+<p>Projection calée sur la dress rehearsal du <strong>30/08/2026</strong> : Barillette / Baudichonne ×2, <strong>5h23 / +2 776 m</strong> (4h25 roulées). Bosse 1 : <strong>231 W @ 124 bpm</strong>. Bosse 3 capée 130 bpm : <strong>207 W</strong>. 230 W n'est pas une allure 20 h.</p>
+</div>
+<div class="table-container"><table><thead><tr><th>Donnée GPX</th><th>Valeur</th></tr></thead><tbody><tr><td>Distance</td><td><strong>365,6 km</strong></td></tr><tr><td>Dénivelé+</td><td><strong>+10 982 m</strong> (GPX brut ; le lissé sera ~10–15 % plus bas)</td></tr><tr><td>Altitude max</td><td>2 792 m (Bonette)</td></tr><tr><td>Cols >2000 m</td><td>7 (Izoard, Agnel, Sampeyre, Fauniera, Lombarde, Bonette, Vars)</td></tr><tr><td>Point de départ</td><td>Guillestre (~891 m)</td></tr><tr><td>Limite Chevalier</td><td><strong>04:00 dimanche 6/09</strong> (24 h après le départ)</td></tr></tbody></table></div>
+<hr/>
+<h2>Pacing — Plafond 210 W, pas une cible à coller</h2>
+<ul>
+<li><strong>231 W @ 124 bpm</strong> tenait 77 min à froid le 30/08. En 3 cols, passage à <strong>207 W</strong> à FC 130. Sur 15 h de montée : <strong>210 W = plafond du premier col</strong>, pas la moyenne à chasser.</li>
+<li><strong>Izoard (3,5 % / 2h40)</strong> : 210 W va sembler facile (FC ~120). Cap <strong>FC ≤ 125</strong>. Les watts sont secondaires. C'est là qu'on casse la journée.</li>
+<li><strong>Fade prévu</strong> : ~210 W → ~170 W sur Vars. L'accepter. Le 30/08, la VAM n'a perdu que ~5 % quand les watts ont glissé.</li>
+<li><strong>Descentes</strong> : 40–45 km/h tant que frais et jour (Izoard → Sampeyre). Après Fauniera : plus lent, nuque / Graaalps. Nuit : <strong>≤ 35 km/h</strong>. Le modèle ci-dessous a déjà allongé Fauniera, Lombarde, Bonette et Vars.</li>
+</ul>
+<hr/>
+<h2>Les 7 cols — Projection départ Guillestre</h2>
+<div class="table-container"><table><thead><tr><th>#</th><th>Col</th><th>Summit</th><th>D+</th><th>Dist. montée</th><th>Grade moy</th><th>Puissance eff.</th><th>Vitesse</th><th>Temps montée</th><th>Temps desc.</th></tr></thead><tbody><tr><td>1</td><td><strong>Izoard</strong></td><td>2 357 m</td><td>1 753 m</td><td>49,6 km</td><td>3,5 %</td><td>≤210 W · <strong>FC ≤ 125</strong></td><td>17,4 km/h</td><td><strong>2h51</strong></td><td>0h20</td></tr><tr><td>2</td><td><strong>Agnel</strong></td><td>2 738 m</td><td>1 463 m</td><td>24,4 km</td><td>6,0 %</td><td>210 W</td><td>11,8 km/h</td><td><strong>2h04</strong></td><td>0h42</td></tr><tr><td>3</td><td><strong>Sampeyre</strong></td><td>2 264 m</td><td>1 316 m</td><td>15,4 km</td><td>8,5 %</td><td>210 W</td><td>8,6 km/h</td><td><strong>1h47</strong></td><td>0h26</td></tr><tr><td>4</td><td><strong>Fauniera</strong></td><td>2 421 m</td><td>1 570 m</td><td>24,5 km</td><td>6,4 %</td><td>203 W</td><td>10,8 km/h</td><td><strong>2h17</strong></td><td>0h40</td></tr><tr><td>5</td><td><strong>Lombarde</strong></td><td>2 339 m</td><td>1 641 m</td><td>30,7 km</td><td>5,3 %</td><td>191 W</td><td>11,8 km/h</td><td><strong>2h36</strong></td><td>0h38</td></tr><tr><td>6</td><td><strong>Bonette</strong></td><td>2 792 m</td><td>2 015 m</td><td>39,8 km</td><td>5,1 %</td><td>181 W</td><td>11,8 km/h</td><td><strong>3h23</strong></td><td>0h45 🌙</td></tr><tr><td>7</td><td><strong>Vars</strong></td><td>2 107 m</td><td>931 m</td><td>21,8 km</td><td>4,3 %</td><td>169 W</td><td>12,7 km/h</td><td><strong>1h43</strong></td><td>0h50 🌙</td></tr></tbody></table></div>
+<ul>
+<li><strong>Temps de montée cumulé : ~16h41</strong></li>
+<li><strong>Temps de descente cumulé : ~4h21</strong> (buffer fatigue / nuit inclus après Fauniera)</li>
+<li><strong>Temps roulé hors arrêts : ~21h02</strong></li>
+</ul>
+<hr/>
+<h2>Timeline — Départ 04h00 samedi 5/09</h2>
+<p>Heures <strong>hors arrêts</strong>. Ajouter ensuite le budget d'arrêts (tableau du dessous).</p>
+<div class="table-container"><table><thead><tr><th>Heure</th><th>km</th><th>Événement</th><th>Notes</th></tr></thead><tbody><tr><td><strong>04:00</strong></td><td>0</td><td>🚴 Départ Guillestre</td><td>Nuit, gorges du Guil. Petit-déj <strong>dans la poche</strong> (Ville-Vieille ouvre à 07h00).</td></tr><tr><td><strong>06:51</strong></td><td>50</td><td>🏔️ <strong>Sommet Izoard</strong> (2 357 m)</td><td>1 753 m D+ (2h51 @ 210 W) — aube. Si FC > 125 sur la montée : trop vite.</td></tr><tr><td>07:11</td><td>65</td><td>⬇️ Vallée Queyras (1 353 m)</td><td>Descente 45 km/h</td></tr><tr><td><strong>09:15</strong></td><td>89</td><td>🏔️ <strong>Sommet Agnel</strong> (2 738 m)</td><td>1 463 m D+ (2h04 @ 210 W) — ⚠️ point haut, froid possible.</td></tr><tr><td>09:57</td><td>121</td><td>⬇️ Vallée Sampeyre IT (960 m)</td><td>Descente 45 km/h</td></tr><tr><td><strong>11:44</strong></td><td>136</td><td>🏔️ <strong>Sommet Sampeyre</strong> (2 264 m)</td><td>1 316 m D+ (1h47 @ 210 W) — col le plus raide (8,5 %). 40/44 assis.</td></tr><tr><td>12:10</td><td>155</td><td>⬇️ Vallée Stroppo / Fauniera (918 m)</td><td>Descente 45 km/h</td></tr><tr><td><strong>14:27</strong></td><td>180</td><td>🏔️ <strong>Sommet Fauniera</strong> (2 421 m)</td><td>1 570 m D+ (2h17 @ 203 W) — début de fatigue.</td></tr><tr><td>15:07</td><td>206</td><td>⬇️ Vallée Demonte (751 m)</td><td>Descente 39 km/h — point le plus bas (751 m) / grand repas.</td></tr><tr><td><strong>17:43</strong></td><td>237</td><td>🏔️ <strong>Sommet Lombarde</strong> (2 339 m)</td><td>1 641 m D+ (2h36 @ 191 W) — fatigue installée.</td></tr><tr><td>18:21</td><td>258</td><td>⬇️ Vallée Isola / St-Étienne (866 m)</td><td>Descente 33 km/h</td></tr><tr><td><strong>21:44</strong></td><td>297</td><td>🏔️ <strong>Sommet Bonette</strong> (2 792 m)</td><td>2 015 m D+ (3h23 @ 181 W) — crépuscule / nuit 🌙. Accepter ~180 W.</td></tr><tr><td>22:29</td><td>321</td><td>⬇️ Vallée Jausiers (1 222 m)</td><td>Descente 32 km/h nuit.</td></tr><tr><td><strong>00:12</strong></td><td>342</td><td>🏔️ <strong>Sommet Vars</strong> (2 107 m)</td><td>931 m D+ (1h43 @ 169 W) — nuit 🌙.</td></tr><tr><td><strong>~01:02</strong></td><td>366</td><td>🏁 <strong>Arrivée Guillestre</strong></td><td>Hors arrêts. Descente ≤ 35 km/h.</td></tr></tbody></table></div>
+<h3>Scénarios d'arrivée (selon gestion des arrêts)</h3>
+<div class="table-container"><table><thead><tr><th>Scénario</th><th>Arrêts cumulés</th><th>Heure Arrivée</th><th>Marge sur les 24 h (avant 04:00)</th></tr></thead><tbody><tr><td><strong>Arrêts optimisés (Cible)</strong></td><td><strong>~2h00</strong></td><td><strong>~03:00</strong></td><td><strong>+1h00</strong></td></tr><tr><td><strong>Arrêts modérés (Plafond)</strong></td><td><strong>~2h30</strong></td><td><strong>~03:30</strong></td><td><strong>+0h30</strong></td></tr><tr><td>Arrêts dérapés (>2h58)</td><td>>3h00</td><td>04h05+</td><td>❌ Chevalier raté (>24h)</td></tr></tbody></table></div>
+<div class="callout">
+<p>⚠️ <strong>Le juge de paix des 24h est le temps d'arrêt :</strong></p>
+<p>Avec 21h02 de temps de selle, le budget d'arrêts cumulés est strictement <strong>plafonné à 2h30</strong> (soit max 10–12 min par col/ravito + 25 min repas à Demonte).</p>
+</div>
+<hr/>
+<h2>Checkpoints de contrôle (pendant la course)</h2>
+<div class="table-container"><table><thead><tr><th>Checkpoint</th><th>Heure cible (hors arrêts)</th><th>Heure limite (24 h avec marge)</th></tr></thead><tbody><tr><td>Sommet Izoard</td><td>06:51</td><td>08:00</td></tr><tr><td>Sommet Agnel</td><td>09:15</td><td>10:30</td></tr><tr><td>Sommet Sampeyre</td><td>11:44</td><td>13:00</td></tr><tr><td>Sommet Fauniera</td><td>14:27</td><td>16:00</td></tr><tr><td>Sommet Lombarde</td><td>17:43</td><td><strong>19:30</strong></td></tr><tr><td>Sommet Bonette</td><td>21:44</td><td>23:30</td></tr><tr><td>Sommet Vars</td><td>00:12</td><td>02:30</td></tr></tbody></table></div>
+<p><strong>Si Lombarde avant 19h30 → le <24 h est encore sous contrôle</strong> (il reste 5h40 de selle + arrêts jusqu'à Guillestre).</p>
+<hr/>
+<h2>Règles de course (écrites avant le départ)</h2>
+<p>Mode d'échec documenté = <strong>mental / tactique</strong> (BRM 1000), pas le moteur. Ne pas décider d'arrêter entre minuit et 8 h — café, solide, 10 min, puis re- trancher.</p>
+<div class="table-container"><table><thead><tr><th></th><th>Signal</th><th>Action</th></tr></thead><tbody><tr><td><strong>Continuer</strong></td><td>Côte 0, omoplate ≤ 2/10, tu manges, Lombarde avant 19h30</td><td>Plafond 210 W, Module C toutes les 20–30 min</td></tr><tr><td><strong>Ralentir</strong></td><td>FC qui dérive à watts égaux, omoplate 3/10, estomac qui refuse 70 g/h</td><td>Descendre à 180 W, pauses 3 min, CHO 50–60 g/h, descente encore plus lente</td></tr><tr><td><strong>Couper le one-push</strong></td><td>Omoplate ≥ 4/10 qui ne cède pas au changement de position ; plus rien qui passe ; descente dangereuse (sommeil / orage) ; Lombarde <strong>après 19h30</strong></td><td>Nuit à Isola / St-Étienne, finir Bonette + Vars le lendemain (repli 3 jours)</td></tr></tbody></table></div>
+<p>Crevaison : <strong>CO2 d'abord</strong>, jamais mini-pompe en force (30/08 : pompe cassée → omoplate 2–3/10). 2 cartouches + flexible.</p>
+<hr/>
+<h2>Ravitaillement & Points d'Eau Stratégiques</h2>
+<p>Cible : <strong>70 g CHO/h</strong> dès l'Izoard (protocole <code>nutrition.md</code>). Si l'estomac lâche en altitude (Bonette / Vars) : <strong>50–60 g/h</strong>, ne pas forcer 1 350 g. Solide salé aux arrêts. Testé seulement ~5 h à 60–70 g/h le 30/08.</p>
+<h3>🏪 Les 6 Hubs Majeurs (Solide + Eau + Commerces)</h3>
+<p>1. <strong>Hub 1 : Ville-Vieille & Molines-en-Queyras (~km 70–76)</strong> — <em>Avant l'Agnel (~07h15–08h00 hors arrêts)</em></p>
+<ul>
+<li><strong>Boulangerie Le Pain des Cimes</strong> (km 71.3, Ville-Vieille, <strong>ouvre 07h00</strong>) : sandwichs, tartes, viennoiseries. Sommet Izoard 06h40 → tu arrives <strong>pile à l'ouverture</strong>, ou tu attends. D'où le solide au départ.</li>
+<li><strong>Intermarché Contact</strong> (km 70.2) & <strong>Proxi</strong> (km 76.9 à Molines).</li>
+<li><strong>Fontaines :</strong> Château-Queyras (km 68.8), Ville-Vieille (km 71.4), Molines (km 76.2), Fontgillarde (km 81.1).</li>
+<li>👉 <em>Plein solide/liquide complet avant l'Agnel (2 738 m).</em></li>
+</ul>
+<p>2. <strong>Hub 2 : Casteldelfino & Sampeyre (~km 112–124)</strong> — <em>Avant le Col de Sampeyre (~10h00–11h00)</em></p>
+<ul>
+<li><strong>Casteldelfino (km 112.7) :</strong> Boulangerie <em>Lou Negosi de la Vilo</em> + fontaine.</li>
+<li><strong>Sampeyre (km 123.5) :</strong> Boulangeries <em>Lu Furnìe</em> et <em>Non Solo Pane</em>, supermarché <em>Ok Market</em>.</li>
+<li>👉 <em>Salé/solide avant le col le plus raide (8,5 % moy, rampes >11 %).</em></li>
+</ul>
+<p>3. <strong>⚠️ Hub 3 : Stroppo / Ponte Marmora / Canosio (~km 155–163)</strong> — <em>Pied et bas de la Fauniera (~12h15–13h00)</em></p>
+<ul>
+<li><strong>Fontaines :</strong> Stroppo (km 155.4, 157.7), Ponte Marmora (km 161.4), <strong>Canosio (km 163, 1 250 m)</strong> — coupe la montée sauvage.</li>
+<li>Bar/auberge à Ponte Marmora.</li>
+<li>🚨 <strong>ZONE BLANCHE COMMERCIALE</strong> jusqu'au sommet Fauniera (2 421 m). Canosio = eau seulement.</li>
+<li>👉 <em>2 bidons à 100 % + 3 h de solide avant de quitter Ponte Marmora.</em></li>
+</ul>
+<p>4. <strong>Hub 4 : Demonte & Vinadio (~km 207–220)</strong> — <em>Grand repas mi-course avant la Lombarde (~14h50–15h40)</em></p>
+<ul>
+<li><strong>Demonte (km 207.4) :</strong> Épiceries <em>Alimentari</em>, boulangerie <em>Mario</em>, pizzerias / snacks.</li>
+<li><strong>Vinadio (km 220) :</strong> Commerces, bars et fontaines.</li>
+<li>👉 <em>Point le plus bas (750 m) et le plus chaud. Pause 15–20 min salé/protéiné + électrolytes. Ne pas s'incruster.</em></li>
+</ul>
+<p>5. <strong>Hub 5 : Isola Village & Saint-Étienne-de-Tinée (~km 260–275)</strong> — <em>Pied de la Bonette (~17h45–18h45)</em></p>
+<ul>
+<li><strong>Isola Village (km 260.5) :</strong> Boulangerie <em>La Baguette Magique</em>, épicerie <em>La Guerche</em>.</li>
+<li><strong>Saint-Étienne-de-Tinée (km 274.5) :</strong> Supermarché <em>Proxi</em>, boulangerie, fontaines.</li>
+<li>🚨 <strong>Dernier vrai ravitaillement de la journée.</strong> Montée 40 km / +2 015 m, sommet 2 792 m de nuit. Rien au col.</li>
+<li>👉 <em>Plein 2 bidons + <strong>stock autonome pour Vars</strong> (solide + sachets) comme si Jausiers n'existait pas. Dernière eau : Bousiéyas (km 287). Veste thermique sortie.</em></li>
+</ul>
+<p>6. <strong>Hub 6 : Jausiers & Saint-Paul-sur-Ubaye (~km 323–337)</strong> — <em>Avant Vars (~21h45–22h30 hors arrêts)</em></p>
+<ul>
+<li><strong>Jausiers (km 323.6) :</strong> Boulangerie <em>La Hûche à Pain</em>, Proxi, fontaine — <strong>horaires du soir quasi sûrement fermés.</strong></li>
+<li><strong>Saint-Paul-sur-Ubaye (km 337.2) :</strong> Fontaine du village.</li>
+<li>👉 <em>Fontaine + ce que tu portes depuis Isola. Ne pas compter sur un commerce ouvert.</em></li>
+</ul>
+<h3>💧 Fontaines et refuges aux sommets / cols</h3>
+<ul>
+<li><strong>Izoard (km 52.7) :</strong> Cabane du Col & Refuge Napoléon (1 km sous le col).</li>
+<li><strong>Agnel (km 92.0) :</strong> Fontaine de Fontgillarde (km 81) + Refuge Agnel (km 89).</li>
+<li><strong>Fauniera (km 182.9) :</strong> Rifugio Carbonetto (km 190.8, descente sud).</li>
+<li><strong>Lombarde (km 240.1) :</strong> Fontana Luigi (km 232) + Snack l'Isolien au sommet (si encore ouvert).</li>
+<li><strong>Vars (km 345.4) :</strong> Restaurant L'Igloo / fontaine au col (nuit : ne pas en dépendre).</li>
+</ul>
+<hr/>
+<h2>Vigilance one-push</h2>
+<ul>
+<li><strong>Pacing</strong> : 210 W MAX dès l'Izoard, et seulement si FC ≤ 125. Pas 230 W.</li>
+<li><strong>Sampeyre (8,5 %)</strong> : 40×10-44, rester souple. Assis par défaut (chaîne thoracique). 30–60 s danseuse autorisés — côte consolidée. Pas de death-grip.</li>
+<li><strong>Bonette (2 792 m)</strong> : plus haut + plus long. Altitude + fatigue. Accepter ~180 W. CHO 50–60 g/h si besoin.</li>
+<li><strong>Épaule / omoplate / nuque 20 h+</strong> : Module C obligatoire (changement toutes les 20–30 min). Limiter = geste de bord de route (porter, pomper), pas le pédalage.</li>
+<li><strong>Nuit</strong> : froid à 2 700 m en septembre. Couches accessibles avant Bousiéyas. Vars de nuit = descente lente.</li>
+<li><strong>Somnolence</strong> : créneau 02:00–05:00 si tu glisses vers 22 h de course. Caféine gérée, micro-sieste 10–15 min, <strong>pas de DNF dans ce créneau</strong>.</li>
+</ul>
+<hr/>
+<h2>Alternative 3 jours (repli)</h2>
+<p>Sens <strong>horaire, départ Guillestre</strong> — l'ancien découpage Vars → Izoard → Agnel était l'autre départ / l'autre sens. Ne pas l'utiliser sur ce GPX.</p>
+<p>Si le one-push est coupé (règle ci-dessus), dormir et finir :</p>
+<div class="table-container"><table><thead><tr><th>Étape</th><th>Distance</th><th>D+</th><th>Cols</th><th>Nuit</th></tr></thead><tbody><tr><td>J1</td><td>~125 km</td><td>~3 200 m</td><td>Izoard + Agnel</td><td>Sampeyre / Casteldelfino</td></tr><tr><td>J2</td><td>~135 km</td><td>~4 500 m</td><td>Sampeyre + Fauniera + Lombarde</td><td>Isola / St-Étienne</td></tr><tr><td>J3</td><td>~110 km</td><td>~2 950 m</td><td>Bonette + Vars</td><td>Guillestre</td></tr></tbody></table></div>
+<p>En course, le cas probable est : <strong>one-push jusqu'à Isola, nuit, Bonette + Vars le dimanche</strong>. <code>logistics.md</code> décrit encore la fenêtre Jausiers / août 3 jours — ne pas s'en servir pour les villes de départ.</p>
+<hr/>
+<h2>GPX Source</h2>
+<ul>
+<li>Trace : <code>Les-7-Majeurs-Officiel-Sens-horaire-Guillestre.gpx</code></li>
+<li>Checkpoints : <code>checkpoints_7m_guillestre.json</code></li>
+<li>Référence Confrérie sens horaire : <https://www.les7majeurs.com/parcours-2/></li>
+</ul>
+  </main>
+
+  <div class="bottom-bar">
+    <a href="index.html" class="action-btn action-btn-secondary">🗺️ Voir la Carte & Altis</a>
+    <a href="coureur.html" class="action-btn">🛰️ Transmettre Position</a>
+  </div>
+</body>
+</html>
