@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Analyse — Les 7 Majeurs 5–6 sept. 2026</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #131b2e;
+      --card-border: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0 0 5rem 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 15, 25, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .nav-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+    }
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.4rem;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #1e293b;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.4rem 0.65rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.15s;
+    }
+    .nav-btn:hover, .nav-btn.active {
+      background: #38bdf8;
+      color: #0b0f19;
+      border-color: #38bdf8;
+    }
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem;
+    }
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
+      color: #fff;
+      background: linear-gradient(135deg, #fff 40%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.4rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-top: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      margin-bottom: 0.9rem;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+    ul, ol {
+      margin-bottom: 1rem;
+      padding-left: 1.25rem;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+    li {
+      margin-bottom: 0.35rem;
+    }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(255, 255, 255, 0.08);
+      color: #38bdf8;
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.85em;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--card-border);
+      margin: 2rem 0;
+    }
+    .callout {
+      background: var(--accent-glow);
+      border-left: 4px solid var(--accent);
+      padding: 0.85rem 1rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.2rem 0;
+    }
+    .callout p {
+      margin-bottom: 0.3rem;
+      color: #e0f2fe;
+    }
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.2rem 0;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      background: var(--card-bg);
+      -webkit-overflow-scrolling: touch;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .wrap-tables table {
+      white-space: normal;
+    }
+    th {
+      background: #1e293b;
+      color: #f8fafc;
+      font-weight: 700;
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+    td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: #cbd5e1;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:nth-child(even) {
+      background: rgba(255,255,255,0.015);
+    }
+    strong {
+      color: #fff;
+    }
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--card-border);
+      padding: 0.65rem 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      z-index: 50;
+    }
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #38bdf8;
+      color: #0b0f19;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .action-btn-secondary {
+      background: #1e293b;
+      color: #f1f5f9;
+      border: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body class="wrap-tables">
+  <header>
+    <div class="nav-title">
+      <span>🏔️</span> 7 Majeurs
+    </div>
+    <div class="nav-buttons">
+      <a href="index.html" class="nav-btn">🗺️ Carte</a>
+      <a href="roadbook.html" class="nav-btn">📖 Roadbook</a>
+      <a href="analyse.html" class="nav-btn active">📊 Analyse</a>
+      <a href="coureur.html" class="nav-btn">🛰️ Balise</a>
+    </div>
+  </header>
+
+  <main>
+    <h1>7 Majeurs — critique ultra-distance</h1>
+<div class="callout">
+<p><strong>Dates</strong> : 5–6 septembre 2026</p>
+<p><strong>Parcours</strong> : Guillestre → Guillestre (sens horaire)</p>
+<p><strong>Résultat</strong> : boucle complète · Chevalier &lt;24 h manqué · demi-tour vers Demonte</p>
+<p><strong>Traces</strong> : <code>7_majeurs_jour_1_2.gpx</code> + <code>7_majeurs_jour_2_2.gpx</code> (Sauce for Strava, 1 Hz : puissance, FC, cadence, température)</p>
+</div>
+<hr/>
+<h2>Verdict</h2>
+<p>Arrêter avant la Lombarde était la décision juste. Le moteur tenait encore les watts du roadbook ; la durabilité (EF, chaleur, lombaires, genoux en prise) était déjà cassée. Badge Chevalier improbable échangé contre une boucle finie, un diagnostic clair, et une J2 propre. C’est du coaching ultra, pas un abandon.</p>
+<div class="table-container"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Distance GPS</td><td><strong>387,9 km</strong></td></tr><tr><td>D+ brut GPX</td><td><strong>+11 091 m</strong></td></tr><tr><td>Temps mobile</td><td><strong>21 h 56</strong></td></tr><tr><td>Temps total</td><td><strong>32 h 37</strong></td></tr></tbody></table></div>
+<p>Journal du 6/09 : 388,2 km / +10 700 m, 21 h 54 mobile. Écart D+ = lissage GPX vs IGN.</p>
+<hr/>
+<h2>Budget 24 h</h2>
+<p>Départ <strong>03:35</strong> samedi · coupure Chevalier <strong>03:35</strong> dimanche · arrivée réelle <strong>12:12</strong> dimanche (<strong>+8 h 37</strong>).</p>
+<div class="table-container"><table><thead><tr><th>Bloc</th><th>Durée</th></tr></thead><tbody><tr><td>Selle</td><td>21 h 56</td></tr><tr><td>Arrêts</td><td>2 h 23</td></tr><tr><td>Sommeil (Demonte)</td><td>8 h 17</td></tr><tr><td><strong>Horloge</strong></td><td><strong>32 h 37</strong></td></tr></tbody></table></div>
+<p>Mobile = vitesse ≥ 2,5 km/h ou cadence ≥ 30 ou watts ≥ 40. Arrêts = elapsed − mobile (pauses GPS incluses).</p>
+<p><strong>Le 24 h n’était plus un objectif, c’était un piège.</strong> Mobile 21 h 56 + arrêts 2 h 23 = 24 h 19 — déjà hors Chevalier, et seulement si la J2 se roule au niveau <em>post-sommeil</em>.</p>
+<p>Premier passage Demonte à <strong>16:32</strong>, pas 17:27 : départ immédiat vers la Lombarde. À <strong>16:57</strong>, 7 km plus ouest (direction Vinadio), stop 11 min et demi-tour. La règle 19h30 était encore sur le fil (attaque Lombarde ~17h00 → sommet ~19:35). Coupure sur le coût ressenti, pas sur l’horloge — puis retour chercher un lit.</p>
+<hr/>
+<h2>Puissance vs plan, col par col</h2>
+<p>Watts moyens en montée (points mobiles) contre le plafond du roadbook. eFTP <strong>286 W</strong>.</p>
+<div class="table-container"><table><thead><tr><th>Col</th><th>Plan (W)</th><th>Réel (W)</th><th>% FTP</th><th>EF</th><th>FC moy</th></tr></thead><tbody><tr><td>Izoard</td><td>210</td><td>210</td><td>73,5</td><td>1,72</td><td>122</td></tr><tr><td>Agnel</td><td>210</td><td>209</td><td>73,0</td><td>1,57</td><td>133</td></tr><tr><td>Sampeyre</td><td>210</td><td>201</td><td>70,3</td><td>1,43</td><td>140</td></tr><tr><td>Fauniera</td><td>203</td><td>196</td><td>68,5</td><td>1,40</td><td>139</td></tr><tr><td>Lombarde</td><td>191</td><td>197</td><td>69,0</td><td>1,65</td><td>120</td></tr><tr><td>Bonette</td><td>181</td><td>183</td><td>63,9</td><td>1,58</td><td>115</td></tr><tr><td>Vars</td><td>169</td><td>204</td><td>71,4</td><td>1,61</td><td>127</td></tr></tbody></table></div>
+<p>EF = watts moyens / FC moyenne en montée. Chute <strong>1,72 → 1,40</strong> sur J1 ; rebond à <strong>1,65</strong> après 8 h 17 d’arrêt.</p>
+<p>Cap roadbook : FC ≤ 125 sur l’Izoard. Tenue en moyenne, cassée en seconde mi-temps (128 bpm).</p>
+<p>Montée détectée : dernier minimum avant sommet, fenêtre = distance plan × 1,35. Moyenne des watts &gt; 0.</p>
+<h3>Profil (sommets et fonds de vallée, m)</h3>
+<p>Guillestre 944 → Izoard 2 359 → Queyras 1 352 → Agnel 2 740 → vallée Sampeyre 959 → Sampeyre 2 272 → Stroppo 925 → Fauniera 2 455 → Demonte 782 → Lombarde 2 340 → Isola 869 → Bonette 2 794 → Jausiers 1 223 → Vars 2 109 → arrivée 888.</p>
+<p>Après la Fauniera : premier passage Demonte 16:32, aller-retour vers Vinadio, check-in 17:27.</p>
+<hr/>
+<h2>Tableau des 7 cols</h2>
+<div class="table-container"><table><thead><tr><th>Col</th><th>Horaire</th><th>km / D+</th><th>W / FC / EF</th><th>vs plan montée</th><th>Lecture</th></tr></thead><tbody><tr><td>Izoard 2 359 m</td><td>03:44 → 07:00</td><td>49,4 km +1 763 m</td><td>210 W · 122 bpm · 1,72</td><td>+12 min · +0 W</td><td>Watts ok, 2e mi-temps trop vite</td></tr><tr><td>Agnel 2 740 m</td><td>07:23 → 09:36</td><td>24,3 km +1 451 m</td><td>209 W · 133 bpm · 1,57</td><td>+5 min · −1 W</td><td>Watts stables, FC qui file</td></tr><tr><td>Sampeyre 2 272 m</td><td>10:36 → 12:27</td><td>15,5 km +1 313 m</td><td>201 W · 140 bpm · 1,43</td><td>+5 min · −9 W</td><td>Le plus cher en FC. 32 °C</td></tr><tr><td>Fauniera 2 455 m</td><td>13:17 → 15:40</td><td>22,8 km +1 549 m</td><td>196 W · 139 bpm · 1,40</td><td>+2 min · −7 W</td><td>Rupture. 37 °C, 40×44 au stop</td></tr><tr><td>Lombarde 2 340 m</td><td>01:52 → 04:47</td><td>29,6 km +1 634 m</td><td>197 W · 120 bpm · 1,65</td><td>−0 min · +6 W</td><td>Le sommeil a rendu l’EF</td></tr><tr><td>Bonette 2 794 m</td><td>05:33 → 09:06</td><td>39,7 km +2 003 m</td><td>183 W · 115 bpm · 1,58</td><td>−3 min · +2 W</td><td>Exécution de plan. Col le plus juste</td></tr><tr><td>Vars 2 109 m</td><td>09:48 → 11:26</td><td>21,8 km +900 m</td><td>204 W · 127 bpm · 1,61</td><td>−15 min · +35 W</td><td>Finish surge. Il restait du gaz</td></tr></tbody></table></div>
+<p>Horaires en CEST. « vs plan » = temps mobile de montée contre le roadbook, pas l’heure d’horloge (départ réel 03:35, plan 04:00).</p>
+<hr/>
+<h2>Critique col par col</h2>
+<h3>1 — Izoard · 210 W · EF 1,72 · FC 122</h3>
+<p>49,4 km à 3,6 %, nuit puis aube, 5–11 °C. C’est le col où le roadbook disait : 210 W va sembler facile, c’est là qu’on casse la journée. Les watts moyens collent au plafond. La structure interne non.</p>
+<p>Première mi-temps 204 W @ 116 bpm. Seconde 216 W @ 128 bpm : accélération (+6 % watts, +10,5 % FC) quand le col se redresse. Le cap 125 bpm est tenu en moyenne et cassé pile sur la partie qui compte. VAM 579 m/h, cadence 74 — encore souple. Descente 44 km/h, conforme.</p>
+<p><strong>Critique :</strong> le Chevalier ne se perd pas à 196 W sur la Fauniera, il se prépare ici. Sur un 3,5 % de 50 km, la consigne n’est pas « 210 W », c’est « FC ≤ 120 jusqu’au refuge Napoléon ». ~10 W et ~10 bpm offerts à un col qui n’en demandait pas.</p>
+<h3>2 — Agnel · 209 W · EF 1,57 · FC 133</h3>
+<p>24,3 km à 6,0 %, 1 352 → 2 740 m. Watts quasi identiques à l’Izoard (209 vs 210), FC +11 bpm. Dérive interne 127 → 140 bpm à watts stables. Premier vrai signal d’altitude + dette de l’Izoard, pas un problème de braquet.</p>
+<p>Temps +5 min sur le plan, VAM 673, cadence 70. Descente vers Sampeyre 42 km/h (plan 45) — déjà un cran plus prudent, +3 à 4 min. Stop 2 min 45 au sommet. Rien à redire sur la gestion d’arrêt.</p>
+<p><strong>Critique :</strong> ici il fallait déjà descendre le plafond à 195–200 W. 210 W défendu comme une cible au lieu d’un maximum. L’EF 1,57 dit que le coût cardiaque du watt a augmenté de 9 % en un col.</p>
+<h3>3 — Sampeyre · 201 W · EF 1,43 · FC 140</h3>
+<p>Le plus raide : 15,5 km à 8,5 %, VAM 706 — meilleure VAM du week-end, et pire rapport FC/watts de J1. 201 W @ 140 bpm, 21 → 32 °C. Presque zéro arrêt en montée. 70 min entre 8 et 12 %. Cadence 69 en moyenne ; 67 sur les rampes &gt;12 %, déjà proche du granny.</p>
+<p>Descente 35 km/h contre 45 au plan. Sur 19 km ça coûte ~8 min. Après Graaalps et la côte, on n’exige pas 45. Le budget Chevalier n’avait juste pas prévu ce frein.</p>
+<p><strong>Critique :</strong> le col le plus raide « gagné » (seulement +5 min) en payant 140 bpm et EF 1,43. Sur un one-push, Sampeyre se mouline à 185–190 W, VAM 650, FC ≤ 135. La chaleur de vallée était déjà là : moment de manger salé et de lâcher le chrono, pas de défendre une VAM.</p>
+<h3>4 — Fauniera · 196 W · EF 1,40 · 37 °C</h3>
+<p>22,8 km, +1 549 m, 13:17–15:40. Watts 196, FC 139, EF 1,40 — le plan visait 203 W, un peu en dessous, et malgré ça c’est ici que ça casse. Température 26 → 37 °C. Sur les pentes &gt;12 % : 236 W à 66 rpm. Journal : rupture dans les 18–20 %, genoux en prise, lombaires 4/10.</p>
+<p><strong>Braquet :</strong> pas un choix de couple. Cassette tout à gauche, 40×44, plus rien à descendre. À 66 rpm en granny, la vitesse tombe vers 7,5 km/h — en dessous, le vélo ne tient plus droit. Les 236 W sur les rampes ne sont pas de l’attaque, c’est la puissance minimale pour rester en selle à 18–20 % avec ce développement. La douleur genou disparaissait en moulinant — sauf qu’il n’y avait plus de braquet pour mouliner.</p>
+<p>La seule échappatoire n’était pas « passer un pignon », c’était pied à terre 30–60 s sur les murs, ou un plateau plus petit (38 T / 36 T) que le 10-52 n’a pas pu donner sur ces bases courtes. Le setup 40×10-44, validé pour Sampeyre à 8,5 %, a trouvé sa limite ici, après 180 km, sous 37 °C.</p>
+<p>Sommet 15:40, limite Chevalier 16:00 — encore dedans à l’horloge. Descente 35 km/h. Premier passage à Demonte 16:32 (140 m de l’Airbnb), <strong>sans s’arrêter</strong> : enchaînement vers Vinadio / Lombarde. 9,3 km, 166 W @ 122 bpm, 27–33 °C. À 16:57, stop 11 min, 7 km à l’ouest, demi-tour. Retour Demonte 17:27 pour le lit.</p>
+<p>Sur le papier, depuis 16:32, une Lombarde à 2 h 36 après 25 min de vallée donnait un sommet ~19:35 — pile la règle 19h30. Pas un calcul au bord de la route : le col suivant a été senti trop cher, après la Fauniera à 37 °C, les murs en granny, EF 1,40. Demi-tour lucide, pas un check-in depuis le canapé.</p>
+<p><strong>Critique :</strong> pas un « manqué d’un rien » en s’arrêtant trop tôt. La Lombarde a été testée, puis le coût lu. Continuer, c’était transformer un test propre en DNF nocturne. La Fauniera a montré la limite ; les 9 km vers Vinadio ont confirmé qu’elle tenait encore.</p>
+<h3>5 — Lombarde · 197 W · EF 1,65 · FC 120</h3>
+<p>Restart 01:44, pied de col 01:52, sommet 04:47. 29,6 km, +1 634 m, 8–16 °C. Quasi les mêmes watts que la Fauniera (197 vs 196) pour 19 bpm de moins. L’EF revient à 1,65 — dividende du sommeil, pas un miracle de forme. Temps de montée pile sur le plan (2 h 36).</p>
+<p>16 min d’arrêts dans la montée, dont 9 min 39 près du sommet (04:38, 9 °C). Étirements lombaires, couches, lucide. Première mi-temps 204 W, seconde 190 W (−7 %) à FC parfaitement plate (120 / 120). Le cœur suit, les watts s’effritent : durabilité musculaire encore limitée, système autonome réparé.</p>
+<p><strong>Critique :</strong> pacing de nuit exemplaire. Le seul grief serait de partir à 01:44 — créneau 02–05 h que les règles BRM interdisent pour une <em>décision d’arrêt</em>, pas pour un restart. Ici le restart est programmé, donc acceptable, mais 03:00 après 6 h de sommeil vrai aurait été plus charitable. Choix de finir Bonette + Vars de jour : bon échange.</p>
+<h3>6 — Bonette · 183 W · EF 1,58 · FC 115</h3>
+<p>Le plus long et le plus haut : 39,7 km, +2 003 m, 2 794 m, 05:33–09:06. 183 W contre 181 au plan, 3 h 20 contre 3 h 23. FC 115, cadence 66, VAM 600. Col le plus professionnel du week-end : lent assumé, watt du roadbook tenu, VAM non chassée.</p>
+<p>Dérive FC +10 % (110 → 121) mais depuis un plancher bas : altitude, pas emballement. Descente vers Jausiers 42 km/h en lumière du matin — le plan nuit prévoyait 32. Gain réel du choix de dormir.</p>
+<p><strong>Critique :</strong> presque rien. Si un col doit servir de modèle 2027, c’est celui-là. Cadence moyenne 66 à 11,9 km/h : pas en granny (ça ferait ~7,5 km/h). Rien à voir avec la Fauniera.</p>
+<h3>7 — Vars · 204 W · EF 1,61 · surge</h3>
+<p>21,8 km, +900 m, 09:48–11:26. 204 W contre 169 prévus en fade. −15 min sur le plan. Arrivée Guillestre 12:12. Première mi-temps 174 W @ 110 bpm (vallée / faux-plat Jausiers), seconde 234 W @ 144 bpm. NP 216 W. Finish en accélérant.</p>
+<p>Humain, et compréhensible à 15 km de la voiture. En ultra de plusieurs jours, ce surge est une erreur (récup J+1 brûlée pour 10 min). Ici, la boucle se termine : coût acceptable. Ça prouve surtout qu’après 8 h de sommeil le réservoir n’était pas vide — le limiteur J1 n’était pas le moteur, c’était la combinaison chaleur + braquet au stop + posture.</p>
+<p><strong>Critique :</strong> pas un procès. Le gaz restant sur Vars confirme la décision de Demonte : pas un athlète « fini », un athlète trop chaud, coincé en granny sur les murs, trop longtemps sans pause structurelle.</p>
+<hr/>
+<h2>La décision : tentative Lombarde, puis demi-tour</h2>
+<div class="table-container"><table><thead><tr><th>Heure</th><th>Où</th><th>Quoi</th></tr></thead><tbody><tr><td>16:32</td><td>Demonte (1er passage)</td><td>140 m de l’Airbnb, 783 m. Pas d’arrêt.</td></tr><tr><td>16:34 → 16:57</td><td>Direction Vinadio / Lombarde</td><td>9,3 km, 166 W @ 122 bpm, 27–33 °C. Aller direct.</td></tr><tr><td>16:57 → 17:08</td><td>7 km à l’ouest de Demonte</td><td>Stop 11 min. Le col suivant coûterait trop. Demi-tour.</td></tr><tr><td>17:08 → 17:27</td><td>Retour Demonte</td><td>7,7 km. Check-in. Nuit 17:27 → restart 01:44 (8 h 17).</td></tr></tbody></table></div>
+<p>Le 17:27 du journal est l’arrivée <strong>au lit</strong> après le demi-tour, pas la première arrivée en vallée. Source : GPX J1 après km 207.</p>
+<p><strong>Chiffres.</strong> 16:32 en ville, 17:27 au lit : 55 min d’aller-retour pour aller vérifier la Lombarde. Ce n’est pas de l’hésitation, c’est un échantillon. Restart 01:44. Fenêtre d’arrêt 8 h 17 — plus « une vraie nuit » que « quelques heures », et c’est tant mieux.</p>
+<p>J2 : 162 km, +4 640 m, EF global 1,70 contre 1,58 en J1. Même ordre de watts, 14 bpm de moins. La Lombarde à 197 W / 120 bpm après la Fauniera à 196 W / 139 bpm : le sommeil a travaillé.</p>
+<p><strong>Lecture coach.</strong> Les règles BRM disaient : ne jamais décider d’arrêter entre minuit et 8 h. Décision à 16:57, au soleil, après un vrai signal (Fauniera) et un vrai échantillon (9 km vers la Lombarde). C’est l’inverse du DNF Cressia. Lucide.</p>
+<p>Le repli du roadbook prévoyait Isola après la Lombarde. Revenir chercher le lit à Demonte, une fois le coût du col suivant goûté, est plus juste qu’enchaîner un 1 600 m D+ à 30 °C pour « respecter le plan B ». Isola aurait offert le pire col, au pire moment.</p>
+<hr/>
+<h2>Ce qui a vraiment coûté le Chevalier</h2>
+<div class="table-container"><table><thead><tr><th>Facteur</th><th>Impact</th><th>Évitable ?</th></tr></thead><tbody><tr><td>Izoard 2e mi-temps trop vite</td><td>Dette FC / EF dès le col 2</td><td>Oui — cap 120 bpm, pas 210 W</td></tr><tr><td>Fauniera 37 °C + 40×44 à fond sur 18–20 %</td><td>EF 1,40, genoux saturés en granny</td><td>Partiel — marcher les murs, pas « mouliner »</td></tr><tr><td>Descentes Sampeyre / Fauniera à 35 km/h</td><td>~15–20 min vs plan 45 km/h</td><td>Non — côte + Graaalps, on assume</td></tr><tr><td>Arrêts J1</td><td>1 h 14, sous le budget 2 h 00</td><td>Non — ce n’est pas là que ça s’est joué</td></tr><tr><td>Nuit Demonte 8 h 17 (après demi-tour)</td><td>+8 h 37 d’horloge, J2 sauvée</td><td>Volontaire et juste — décidé sur la route</td></tr></tbody></table></div>
+<hr/>
+<h2>Mécanique, braquet, posture</h2>
+<p>Puissance et cadence par bande de pente (points mobiles en montée) :</p>
+<div class="table-container"><table><thead><tr><th>Pente</th><th>J1 W</th><th>J2 W</th><th>J1 rpm</th><th>J2 rpm</th></tr></thead><tbody><tr><td>0–4 %</td><td>177</td><td>160</td><td>74</td><td>69</td></tr><tr><td>4–8 %</td><td>208</td><td>197</td><td>72</td><td>68</td></tr><tr><td>8–12 %</td><td>209</td><td>211</td><td>69</td><td>66</td></tr><tr><td>12–15 %</td><td>222</td><td>222</td><td>68</td><td>66</td></tr><tr><td>&gt;15 %</td><td>239</td><td>221</td><td>65</td><td>64</td></tr></tbody></table></div>
+<p>Sur J1, 239 W au-delà de 15 % : ce n’est pas une attaque. En 40×44 à fond, la pente impose le watt. J2 plafonne vers 220 W — moins de murs, et les jambes savent déjà ce que ça coûte.</p>
+<p>65 rpm @ 239 W = granny, ~7,5 km/h. Plus rien à gauche. Le patellaire encaisse le couple que le développement impose, pas un choix de braquet.</p>
+<p>Le 40×10-44 avait été retenu parce que le 10-52 ne rentre pas sur les bases courtes. Sampeyre à 8,5 % passe encore. Les murs de la Fauniera, après 180 km, non : le plus petit braquet force ~65 rpm et sature les extenseurs.</p>
+<p>Lombaires 4/10 : le Module C a servi, trop tard pour empêcher la dette (pilier prévention tombé en juillet–août). Côte : 0/10 assis, 1/10 en danseuse J2 seulement — la consolidation a tenu. Genoux 0/10 au repos J+1 : le cartilage n’a pas trinqué, c’est l’appareil extenseur coincé en granny qui a saturé.</p>
+<hr/>
+<h2>Ce que je retiens — coach ultra</h2>
+<p><strong>Le test est réussi, pas le badge.</strong> 388 km, +10 700 m, 21 h 56 de selle, fini. À 50 ans, 6,5 semaines après une côte fracturée, avec un CTL qui montait encore. Le Chevalier &lt;24 h était un objectif de forme 2024 / début 2026, pas de septembre 2026 post-rebuild. L’avoir visé était le bon test TPR. Le demi-tour à 16:57, après avoir goûté la Lombarde, était la bonne course.</p>
+<ol>
+<li><strong>Plafond Izoard = FC, pas watts.</strong> 210 W @ 73 % FTP pendant 3 h « faciles » est un départ de 12 h, pas de 22 h.</li>
+<li><strong>EF sous 1,50 = on arrête de défendre le plan.</strong> Sampeyre 1,43 aurait dû baisser le plafond avant la Fauniera, pas après.</li>
+<li><strong>Rampes &gt;15 % en 40×44 : déjà tout à gauche.</strong> La cadence 65 rpm n’est pas un choix, c’est le plancher du vélo. Consigne : pied à terre 30–60 s sur les murs, ou plateau 36/38 T pour 2027. On ne « mouline » pas un braquet qui n’existe pas.</li>
+<li><strong>Chaleur de vallée &gt;32 °C après 8 h de selle :</strong> repas salé, sodium, 15 min d’ombre. Pas un col sauvage à 37 °C « pour garder le 24 h ».</li>
+<li><strong>Le sommeil de 8 h n’est pas un échec de willpower.</strong> C’est un outil d’ultra. J2 le prouve : mêmes watts, cœur à −14 bpm, Bonette copiée-collée du roadbook.</li>
+<li><strong>DNS TPR tient encore mieux après cette lecture.</strong> Quatre cols ont suffi à casser EF, gainage et genoux en prise. TPR c’est sept journées de ce calibre. Test grandeur nature. Résultat cru.</li>
+</ol>
+<hr/>
+<h2>Sources</h2>
+<ul>
+<li>GPX : <code>7_majeurs_jour_1_2.gpx</code> (départ 03:35:25 CEST) et <code>7_majeurs_jour_2_2.gpx</code> (01:44:16–12:12:19).</li>
+<li>Journal : <code>daily/2026-09-06.md</code> (douleur, décision DNS TPR).</li>
+<li>Cibles : <code>roadbook.md</code> (Chevalier &lt;24 h).</li>
+<li>Puissance et FC = moyennes mobiles de montée. Les segments Strava du journal (Izoard 213 W @ 119, etc.) sont des extraits plus courts ; écarts de 3–8 W / 2–8 bpm attendus.</li>
+</ul>
+  </main>
+
+  <div class="bottom-bar">
+    <a href="index.html" class="action-btn action-btn-secondary">🗺️ Voir la Carte & Altis</a>
+    <a href="coureur.html" class="action-btn">🛰️ Transmettre Position</a>
+  </div>
+</body>
+</html>

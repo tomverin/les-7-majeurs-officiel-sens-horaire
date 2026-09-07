@@ -50,10 +50,13 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      white-space: nowrap;
     }
     .nav-buttons {
       display: flex;
-      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.4rem;
     }
     .nav-btn {
       display: inline-flex;
@@ -62,9 +65,9 @@
       background: #1e293b;
       color: #cbd5e1;
       text-decoration: none;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      padding: 0.45rem 0.75rem;
+      padding: 0.4rem 0.65rem;
       border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.08);
       transition: all 0.15s;
@@ -110,7 +113,7 @@
       color: #cbd5e1;
       font-size: 0.95rem;
     }
-    ul {
+    ul, ol {
       margin-bottom: 1rem;
       padding-left: 1.25rem;
       color: #cbd5e1;
@@ -161,6 +164,9 @@
       font-size: 0.88rem;
       text-align: left;
       white-space: nowrap;
+    }
+    .wrap-tables table {
+      white-space: normal;
     }
     th {
       background: #1e293b;
@@ -232,6 +238,7 @@
     <div class="nav-buttons">
       <a href="index.html" class="nav-btn">🗺️ Carte</a>
       <a href="roadbook.html" class="nav-btn active">📖 Roadbook</a>
+      <a href="analyse.html" class="nav-btn">📊 Analyse</a>
       <a href="coureur.html" class="nav-btn">🛰️ Balise</a>
     </div>
   </header>
@@ -283,40 +290,52 @@
 <h2>Ravitaillement & Points d'Eau Stratégiques</h2>
 <p>Cible : <strong>70 g CHO/h</strong> dès l'Izoard (protocole <code>nutrition.md</code>). Si l'estomac lâche en altitude (Bonette / Vars) : <strong>50–60 g/h</strong>, ne pas forcer 1 350 g. Solide salé aux arrêts. Testé seulement ~5 h à 60–70 g/h le 30/08.</p>
 <h3>🏪 Les 6 Hubs Majeurs (Solide + Eau + Commerces)</h3>
-<p>1. <strong>Hub 1 : Ville-Vieille & Molines-en-Queyras (~km 70–76)</strong> — <em>Avant l'Agnel (~07h15–08h00 hors arrêts)</em></p>
+<ol>
+<li><strong>Hub 1 : Ville-Vieille & Molines-en-Queyras (~km 70–76)</strong> — <em>Avant l'Agnel (~07h15–08h00 hors arrêts)</em></li>
+</ol>
 <ul>
 <li><strong>Boulangerie Le Pain des Cimes</strong> (km 71.3, Ville-Vieille, <strong>ouvre 07h00</strong>) : sandwichs, tartes, viennoiseries. Sommet Izoard 06h40 → tu arrives <strong>pile à l'ouverture</strong>, ou tu attends. D'où le solide au départ.</li>
 <li><strong>Intermarché Contact</strong> (km 70.2) & <strong>Proxi</strong> (km 76.9 à Molines).</li>
 <li><strong>Fontaines :</strong> Château-Queyras (km 68.8), Ville-Vieille (km 71.4), Molines (km 76.2), Fontgillarde (km 81.1).</li>
 <li>👉 <em>Plein solide/liquide complet avant l'Agnel (2 738 m).</em></li>
 </ul>
-<p>2. <strong>Hub 2 : Casteldelfino & Sampeyre (~km 112–124)</strong> — <em>Avant le Col de Sampeyre (~10h00–11h00)</em></p>
+<ol>
+<li><strong>Hub 2 : Casteldelfino & Sampeyre (~km 112–124)</strong> — <em>Avant le Col de Sampeyre (~10h00–11h00)</em></li>
+</ol>
 <ul>
 <li><strong>Casteldelfino (km 112.7) :</strong> Boulangerie <em>Lou Negosi de la Vilo</em> + fontaine.</li>
 <li><strong>Sampeyre (km 123.5) :</strong> Boulangeries <em>Lu Furnìe</em> et <em>Non Solo Pane</em>, supermarché <em>Ok Market</em>.</li>
 <li>👉 <em>Salé/solide avant le col le plus raide (8,5 % moy, rampes >11 %).</em></li>
 </ul>
-<p>3. <strong>⚠️ Hub 3 : Stroppo / Ponte Marmora / Canosio (~km 155–163)</strong> — <em>Pied et bas de la Fauniera (~12h15–13h00)</em></p>
+<ol>
+<li><strong>⚠️ Hub 3 : Stroppo / Ponte Marmora / Canosio (~km 155–163)</strong> — <em>Pied et bas de la Fauniera (~12h15–13h00)</em></li>
+</ol>
 <ul>
 <li><strong>Fontaines :</strong> Stroppo (km 155.4, 157.7), Ponte Marmora (km 161.4), <strong>Canosio (km 163, 1 250 m)</strong> — coupe la montée sauvage.</li>
 <li>Bar/auberge à Ponte Marmora.</li>
 <li>🚨 <strong>ZONE BLANCHE COMMERCIALE</strong> jusqu'au sommet Fauniera (2 421 m). Canosio = eau seulement.</li>
 <li>👉 <em>2 bidons à 100 % + 3 h de solide avant de quitter Ponte Marmora.</em></li>
 </ul>
-<p>4. <strong>Hub 4 : Demonte & Vinadio (~km 207–220)</strong> — <em>Grand repas mi-course avant la Lombarde (~14h50–15h40)</em></p>
+<ol>
+<li><strong>Hub 4 : Demonte & Vinadio (~km 207–220)</strong> — <em>Grand repas mi-course avant la Lombarde (~14h50–15h40)</em></li>
+</ol>
 <ul>
 <li><strong>Demonte (km 207.4) :</strong> Épiceries <em>Alimentari</em>, boulangerie <em>Mario</em>, pizzerias / snacks.</li>
 <li><strong>Vinadio (km 220) :</strong> Commerces, bars et fontaines.</li>
 <li>👉 <em>Point le plus bas (750 m) et le plus chaud. Pause 15–20 min salé/protéiné + électrolytes. Ne pas s'incruster.</em></li>
 </ul>
-<p>5. <strong>Hub 5 : Isola Village & Saint-Étienne-de-Tinée (~km 260–275)</strong> — <em>Pied de la Bonette (~17h45–18h45)</em></p>
+<ol>
+<li><strong>Hub 5 : Isola Village & Saint-Étienne-de-Tinée (~km 260–275)</strong> — <em>Pied de la Bonette (~17h45–18h45)</em></li>
+</ol>
 <ul>
 <li><strong>Isola Village (km 260.5) :</strong> Boulangerie <em>La Baguette Magique</em>, épicerie <em>La Guerche</em>.</li>
 <li><strong>Saint-Étienne-de-Tinée (km 274.5) :</strong> Supermarché <em>Proxi</em>, boulangerie, fontaines.</li>
 <li>🚨 <strong>Dernier vrai ravitaillement de la journée.</strong> Montée 40 km / +2 015 m, sommet 2 792 m de nuit. Rien au col.</li>
 <li>👉 <em>Plein 2 bidons + <strong>stock autonome pour Vars</strong> (solide + sachets) comme si Jausiers n'existait pas. Dernière eau : Bousiéyas (km 287). Veste thermique sortie.</em></li>
 </ul>
-<p>6. <strong>Hub 6 : Jausiers & Saint-Paul-sur-Ubaye (~km 323–337)</strong> — <em>Avant Vars (~21h45–22h30 hors arrêts)</em></p>
+<ol>
+<li><strong>Hub 6 : Jausiers & Saint-Paul-sur-Ubaye (~km 323–337)</strong> — <em>Avant Vars (~21h45–22h30 hors arrêts)</em></li>
+</ol>
 <ul>
 <li><strong>Jausiers (km 323.6) :</strong> Boulangerie <em>La Hûche à Pain</em>, Proxi, fontaine — <strong>horaires du soir quasi sûrement fermés.</strong></li>
 <li><strong>Saint-Paul-sur-Ubaye (km 337.2) :</strong> Fontaine du village.</li>
